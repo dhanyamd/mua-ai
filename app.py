@@ -7,6 +7,7 @@ from constants import INSTRUCTIONS as INSTRUCTIONS_TEMPLATE
 import os
 
 os.environ['GOOGLE_API_KEY'] = GOOGLE_API_KEY
+os.environ['FIRECRAWL_API_KEY'] = FIRECRAWL_API_KEY
 
 def get_languages():
     """Prompts the user for preferred and native languages."""
@@ -36,7 +37,7 @@ agent = Agent(
     memory=True,
     model=Gemini(id="gemini-2.0-flash-exp"), # Using your specified model ID
     add_history_to_messages=True,
-    tools=[FirecrawlTools(scrape=False, crawl=True, api_key=FIRECRAWL_API_KEY),
+    tools=[FirecrawlTools(scrape=True, crawl=True, api_key=FIRECRAWL_API_KEY),
 ],
     show_tool_calls=True,
     markdown=True,
